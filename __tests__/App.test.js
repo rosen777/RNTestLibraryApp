@@ -11,9 +11,3 @@ test('renders correctly', () => {
   const {toJSON} = render(<App />);
   expect(toJSON()).toMatchSnapshot();
 });
-
-describe('Check input field data', () => {
-  test('', () => {
-    
-  });
-});
