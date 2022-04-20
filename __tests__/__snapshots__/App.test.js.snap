@@ -7,6 +7,8 @@ exports[`renders correctly 1`] = `
   <View>
     <Text>
       Your new username is 
+    </Text>
+    <Text>
       
     </Text>
     <TextInput
@@ -20,11 +22,13 @@ exports[`renders correctly 1`] = `
           "padding": 10,
         }
       }
-      testId="Home.username"
+      testID="App.username"
       value=""
     />
     <Text>
       Your new user age is 
+    </Text>
+    <Text>
       
     </Text>
     <TextInput
@@ -38,7 +42,7 @@ exports[`renders correctly 1`] = `
           "padding": 10,
         }
       }
-      testId="Home.userage"
+      testID="App.userage"
       value=""
     />
   </View>

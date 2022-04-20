@@ -14,21 +14,23 @@ const App = () => {
   return (
     <SafeAreaView>
       <View style={styles.wrapper}>
-        <Text>Your new username is {username}</Text>
+        <Text>Your new username is </Text>
+        <Text>{username}</Text>
         <TextInput
           style={styles.input}
           onChangeText={text => onChangeUserName(text)}
           value={username}
           placeholder="Username"
-          testId="Home.username"
+          testID="App.username"
         />
-        <Text>Your new user age is {userage}</Text>
+        <Text>Your new user age is </Text>
+        <Text>{userage}</Text>
         <TextInput
           style={styles.input}
           onChangeText={text => onChangeUserAge(text)}
           value={userage}
           placeholder="Userage"
-          testId="Home.userage"
+          testID="App.userage"
         />
       </View>
     </SafeAreaView>
