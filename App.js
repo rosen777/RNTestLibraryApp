@@ -20,7 +20,7 @@ const App = () => {
           onChangeText={text => onChangeUserName(text)}
           value={username}
           placeholder="Username"
-          testId="Home.username"
+          testID="App.username"
         />
         <Text>Your new user age is {userage}</Text>
         <TextInput
@@ -28,7 +28,7 @@ const App = () => {
           onChangeText={text => onChangeUserAge(text)}
           value={userage}
           placeholder="Userage"
-          testId="Home.userage"
+          testID="App.userage"
         />
       </View>
     </SafeAreaView>
