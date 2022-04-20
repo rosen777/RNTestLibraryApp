@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+>
+  <View>
+    <Text>
+      Your new username is 
+      
+    </Text>
+    <TextInput
+      onChangeText={[Function]}
+      placeholder="Username"
+      style={
+        Object {
+          "borderWidth": 1,
+          "height": 40,
+          "margin": 12,
+          "padding": 10,
+        }
+      }
+      testId="Home.username"
+      value=""
+    />
+    <Text>
+      Your new user age is 
+      
+    </Text>
+    <TextInput
+      onChangeText={[Function]}
+      placeholder="Userage"
+      style={
+        Object {
+          "borderWidth": 1,
+          "height": 40,
+          "margin": 12,
+          "padding": 10,
+        }
+      }
+      testId="Home.userage"
+      value=""
+    />
+  </View>
+</RCTSafeAreaView>
+`;
