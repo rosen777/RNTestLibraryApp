@@ -7,7 +7,6 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest --watchAll",
-    "jest": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
