@@ -4,47 +4,25 @@ exports[`renders correctly 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
 >
-  <View>
-    <Text>
-      Your new username is 
-    </Text>
-    <Text>
-      
-    </Text>
-    <TextInput
-      onChangeText={[Function]}
-      placeholder="Username"
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
       style={
         Object {
-          "borderWidth": 1,
-          "height": 40,
-          "margin": 12,
-          "padding": 10,
+          "fontSize": 18,
+          "fontWeight": "bold",
         }
       }
-      testID="App.username"
-      value=""
-    />
-    <Text>
-      Your new user age is 
+    >
+      Loading...
     </Text>
-    <Text>
-      
-    </Text>
-    <TextInput
-      onChangeText={[Function]}
-      placeholder="Userage"
-      style={
-        Object {
-          "borderWidth": 1,
-          "height": 40,
-          "margin": 12,
-          "padding": 10,
-        }
-      }
-      testID="App.userage"
-      value=""
-    />
   </View>
 </RCTSafeAreaView>
 `;

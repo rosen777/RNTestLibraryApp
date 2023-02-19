@@ -12,6 +12,7 @@
   "dependencies": {
     "@apollo/client": "^3.7.8",
     "@reduxjs/toolkit": "^1.8.5",
+    "cross-fetch": "^3.1.5",
     "graphql": "^16.6.0",
     "react": "17.0.2",
     "react-native": "0.68.1",
@@ -31,6 +32,9 @@
     "react-test-renderer": "17.0.2"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|react-native-elements|react-native-dropdown-picker|@react-native(-community)?)/)"
+    ]
   }
 }
