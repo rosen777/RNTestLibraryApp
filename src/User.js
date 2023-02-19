@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {SafeAreaView, View, Text, StyleSheet, TextInput} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {setUserName, setUserAge, setUserPhone} from './redux/slices/userSlice';
-import {gql, useQuery} from '@apollo/client';
+import {useQuery} from '@apollo/client';
 import {getCountries} from './services/countries/getCountries';
 import DropDownPicker from 'react-native-dropdown-picker';
 
@@ -99,7 +99,7 @@ const User = () => {
             placeholder="Name"
             testID="App.username"
           />
-          <Text style={styles.text}>Your new user age is </Text>
+          <Text style={styles.text}>Your age is </Text>
           <Text style={styles.text}>{userage}</Text>
           <TextInput
             style={styles.input}
@@ -108,29 +108,33 @@ const User = () => {
             placeholder="Userage"
             testID="App.userage"
           />
-          <View style={styles.dropDownWrapper}>
-            <DropDownPicker
-              open={openCountries}
-              value={value}
-              items={items}
-              setOpen={setOpenCountries}
-              setValue={setValue}
-              setItems={setItems}
-              placeholder="Country"
-              labelProps={{
-                numberOfLines: 1,
-              }}
-              itemKey={`c-${items.index}`}
-            />
-            <TextInput
-              style={styles.fullInput}
-              onChangeText={text => setPhone(text)}
-              onEndEditing={event => onChangePhoneNumber(event)}
-              value={phone}
-              placeholder="Phone"
-              testID="App.phone"
-              keyboardType="phone-pad"
-            />
+          <View>
+            <Text style={styles.text}>Your phone is </Text>
+            <Text style={styles.text}>{userPhone}</Text>
+            <View style={styles.dropDownWrapper}>
+              <DropDownPicker
+                open={openCountries}
+                value={value}
+                items={items}
+                setOpen={setOpenCountries}
+                setValue={setValue}
+                setItems={setItems}
+                placeholder="Country"
+                labelProps={{
+                  numberOfLines: 1,
+                }}
+                itemKey={`c-${items.index}`}
+              />
+              <TextInput
+                style={styles.fullInput}
+                onChangeText={text => setPhone(text)}
+                onEndEditing={event => onChangePhoneNumber(event)}
+                value={phone}
+                placeholder="Phone"
+                testID="App.phone"
+                keyboardType="phone-pad"
+              />
+            </View>
           </View>
         </View>
       )}
@@ -151,7 +155,7 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
-    width: 245,
+    width: 230,
     bottom: 8,
   },
   inputContainer: {
@@ -176,5 +180,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
     maxWidth: 130,
     flexDirection: 'row',
+  },
+  wrapper: {
+    flexGrow: 1,
+    marginTop: 20,
   },
 });
