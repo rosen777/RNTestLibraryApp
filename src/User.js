@@ -1,5 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {SafeAreaView, View, Text, StyleSheet, TextInput} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Button,
+} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {setUserName, setUserAge, setUserPhone} from './redux/slices/userSlice';
 import {useQuery} from '@apollo/client';
@@ -16,10 +23,12 @@ const User = () => {
   const [openCountries, setOpenCountries] = useState(false);
   const {loading, error, data} = useQuery(getCountries);
   const [items, setItems] = useState([]);
-  const [value, setValue] = useState('44');
+  const [value, setValue] = useState('');
   const [countries, setCountries] = useState([]);
   const [countriesError, setCountriesError] = useState();
   const [phone, setPhone] = useState('');
+  const [name, setName] = useState('');
+  const [age, setAge] = useState('');
 
   useEffect(() => {
     if (loading) {
@@ -48,11 +57,16 @@ const User = () => {
     dispatch(setUserAge(age));
   };
 
-  const onChangePhoneNumber = event => {
-    const phoneWithCountryCode = `${value}${event.nativeEvent.text}`;
-    console.log(phoneWithCountryCode);
+  const onChangePhoneNumber = phoneString => {
+    const phoneWithCountryCode = `${value}${phoneString}`;
 
     dispatch(setUserPhone(phoneWithCountryCode));
+  };
+
+  const handleSubmit = () => {
+    onChangeUserName(name);
+    onChangeUserAge(age);
+    onChangePhoneNumber(phone);
   };
 
   const handleTransformDropdown = countriesData => {
@@ -67,6 +81,9 @@ const User = () => {
               countryCode: currValue.phone,
             })
           ) {
+            if (currValue.phone === '44') {
+              setValue(currValue.phone);
+            }
             acc.push({
               value: currValue.phone,
               label: `${currValue.emoji} +${currValue.phone}`,
@@ -94,28 +111,33 @@ const User = () => {
           <Text style={styles.text}>{username}</Text>
           <TextInput
             style={styles.input}
-            onChangeText={text => onChangeUserName(text)}
-            value={username}
+            onChangeText={text => setName(text)}
+            value={name}
             placeholder="Name"
             testID="App.username"
           />
           <Text style={styles.text}>Your age is </Text>
-          <Text style={styles.text}>{userage}</Text>
+          <Text testID="userage.text" style={styles.text}>
+            {userage}
+          </Text>
           <TextInput
             style={styles.input}
-            onChangeText={text => onChangeUserAge(text)}
-            value={userage}
+            onChangeText={text => setAge(text)}
+            value={age}
             placeholder="Userage"
             testID="App.userage"
           />
           <View>
             <Text style={styles.text}>Your phone is </Text>
-            <Text style={styles.text}>{userPhone}</Text>
+            <Text testID="App.userphone" style={styles.text}>
+              {userPhone}
+            </Text>
             <View style={styles.dropDownWrapper}>
               <DropDownPicker
                 open={openCountries}
                 value={value}
                 items={items}
+                onPress={setOpenCountries}
                 setOpen={setOpenCountries}
                 setValue={setValue}
                 setItems={setItems}
@@ -123,18 +145,20 @@ const User = () => {
                 labelProps={{
                   numberOfLines: 1,
                 }}
-                itemKey={`c-${items.index}`}
+                testID="App.CountryPicker"
               />
               <TextInput
                 style={styles.fullInput}
                 onChangeText={text => setPhone(text)}
-                onEndEditing={event => onChangePhoneNumber(event)}
                 value={phone}
                 placeholder="Phone"
                 testID="App.phone"
                 keyboardType="phone-pad"
               />
             </View>
+          </View>
+          <View>
+            <Button title="Submit" onPress={() => handleSubmit()} />
           </View>
         </View>
       )}
@@ -184,5 +208,15 @@ const styles = StyleSheet.create({
   wrapper: {
     flexGrow: 1,
     marginTop: 20,
+    justifyContent: 'space-around',
+  },
+  submitButton: {
+    border: 0,
+    lingHeight: 2.5,
+    paddingVertical: 20,
+    width: 80,
+    alignItems: 'center',
+    borderRadius: 8,
+    backgroundColor: '#7393B3',
   },
 });

@@ -7,34 +7,58 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react-native';
+import {setupTestAppServer} from '../src/mocks/testAppServer';
+import {store} from '../src/app/store';
+import {Provider} from 'react-redux';
+
+setupTestAppServer();
+
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
+const component = (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
 
 test('renders correctly', () => {
   const {toJSON} = render(<App />);
   expect(toJSON()).toMatchSnapshot();
 });
 
-const component = <App />;
-
 describe('Check input field data', () => {
   test('Displays a username, if the username field has been completed', async () => {
     const INPUT_TEXT = 'John';
-    const {getByText, getByPlaceholderText} = render(component);
-    await waitFor(() => {
-      const nameInput = getByPlaceholderText('Name');
-      fireEvent.changeText(nameInput, INPUT_TEXT);
-      const username = getByText(INPUT_TEXT);
-      expect(username).toBeTruthy();
-    });
+    const {findByTestId, findByText} = render(component);
+    const nameTextInput = await findByTestId('App.username');
+    fireEvent.changeText(nameTextInput, INPUT_TEXT);
+    const submitButton = await findByText('Submit');
+    fireEvent.press(submitButton);
+    const usernameText = await findByText('John');
+    expect(usernameText).toBeDefined();
   });
 
   test('Displays a userage, if the userage field has been completed', async () => {
-    const INPUT_TEXT = '25';
-    const {getByTestId, getByText} = render(component);
-    await waitFor(() => {
-      const userAgeTextInput = getByTestId('App.userage');
-      fireEvent.changeText(userAgeTextInput, INPUT_TEXT);
-      const userage = getByText(INPUT_TEXT);
-      expect(userage).toBeTruthy();
-    });
+    const INPUT_TEXT = '35';
+    const {findByTestId, findByText} = render(component);
+    const ageTextInput = await findByTestId('App.userage');
+    fireEvent.changeText(ageTextInput, INPUT_TEXT);
+    const submitButton = await findByText('Submit');
+    fireEvent.press(submitButton);
+    const userageText = await findByText('35');
+    expect(userageText).toBeDefined();
+  });
+
+  test('Displays a name when the country is selected from the dropdown, a phone number is inputted, and the submit button is pressed', async () => {
+    const INPUT_TEXT = '7491111111';
+    const {findByTestId, findByText} = render(component);
+    const phoneTextInput = await findByTestId('App.phone');
+    fireEvent.changeText(phoneTextInput, INPUT_TEXT);
+    const submitButton = await findByText('Submit');
+    fireEvent.press(submitButton);
+    const phoneText = await findByText('447491111111');
+    expect(phoneText).toBeDefined();
   });
 });
