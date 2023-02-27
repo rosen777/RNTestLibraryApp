@@ -13,7 +13,7 @@ afterEach(() => {
 const component = <App />;
 
 describe('Check input field data', () => {
-  test('Displays a name, if the name field has been completed', async () => {
+  test('Displays a name, if the name is inputted and the user clicks on the Submit button', async () => {
     const INPUT_TEXT = 'John';
     render(component);
     const nameTextInput = await screen.findByTestId('App.username');
@@ -24,7 +24,7 @@ describe('Check input field data', () => {
     expect(usernameText).toBeDefined();
   });
 
-  test('Displays a userage, if the userage field has been completed', async () => {
+  test('Displays an age, if the age is inputted and the user clicks on the Submit button', async () => {
     const INPUT_TEXT = '35';
     render(component);
     const ageTextInput = await screen.findByTestId('App.userage');

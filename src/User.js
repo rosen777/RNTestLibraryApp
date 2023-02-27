@@ -113,9 +113,7 @@ const User = () => {
             testID="App.username"
           />
           <Text style={styles.text}>Your age is </Text>
-          <Text testID="userage.text" style={styles.text}>
-            {userage}
-          </Text>
+          <Text style={styles.text}>{userage}</Text>
           <TextInput
             style={styles.input}
             onChangeText={text => setAge(text)}
@@ -125,9 +123,7 @@ const User = () => {
           />
           <View>
             <Text style={styles.text}>Your phone is </Text>
-            <Text testID="App.userphone" style={styles.text}>
-              {userPhone}
-            </Text>
+            <Text style={styles.text}>{userPhone}</Text>
             <View style={styles.dropDownWrapper}>
               <DropDownPicker
                 open={openCountries}
