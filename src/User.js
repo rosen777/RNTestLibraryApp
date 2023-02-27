@@ -39,15 +39,11 @@ const User = () => {
         setCountriesError(error);
       }
       if (data) {
+        handleTransformDropdown(data);
         setCountries(data);
       }
     }
   }, [loading, data, error]);
-
-  useEffect(() => {
-    setCountries(data);
-    handleTransformDropdown(data);
-  }, [data]);
 
   const onChangeUserName = name => {
     dispatch(setUserName(name));
