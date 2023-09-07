@@ -103,7 +103,9 @@ const User = () => {
         </View>
       ) : (
         <View style={styles.wrapper}>
-          <Text style={styles.text}>Your name is </Text>
+          <Text testID={'name'} style={styles.text}>
+            Your name is{' '}
+          </Text>
           <Text style={styles.text}>{username}</Text>
           <TextInput
             style={styles.input}
