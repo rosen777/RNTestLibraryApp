@@ -7,11 +7,11 @@ describe('Example', () => {
     await device.reloadReactNative();
   });
 
-  it('should have "Your name is" element', async () => {
-    await expect(element(by.text('Your name is'))).toBeVisible();
+  it('should have a name element', async () => {
+    await expect(element(by.id('name'))).toBeVisible();
   });
 
-  it('should have "Your age is" element', async () => {
-    await expect(element(by.text('Your age is'))).toBeVisible();
+  it('should have an age element', async () => {
+    await expect(element(by.id('age'))).toBeVisible();
   });
 });

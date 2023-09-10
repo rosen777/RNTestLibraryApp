@@ -106,7 +106,9 @@ const User = () => {
           <Text testID={'name'} style={styles.text}>
             Your name is{' '}
           </Text>
-          <Text style={styles.text}>{username}</Text>
+          <Text testID={'age'} style={styles.text}>
+            {username}
+          </Text>
           <TextInput
             style={styles.input}
             onChangeText={text => setName(text)}
