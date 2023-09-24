@@ -1,6 +1,5 @@
 import {graphql} from 'msw';
 
-console.log('handlers');
 export const handlers = [
   graphql.query('GetCountries', (req, res, ctx) => {
     console.log('GetCountries handler');
