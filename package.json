@@ -20,7 +20,9 @@
     "react": "18.0.0",
     "react-native": "0.69.11",
     "react-native-dropdown-picker": "^5.4.4",
-    "react-redux": "^8.0.2"
+    "react-native-url-polyfill": "^2.0.0",
+    "react-redux": "^8.0.2",
+    "whatwg-fetch": "^3.6.19"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -35,14 +37,5 @@
     "metro-react-native-babel-preset": "^0.70.3",
     "msw": "^1.0.1",
     "react-test-renderer": "18.0.0"
-  },
-  "jest": {
-    "preset": "react-native",
-    "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|react-native-elements|react-native-dropdown-picker|@react-native(-community)?)/)"
-    ],
-    "setupFiles": [
-      "./src/setupFile.js"
-    ]
   }
 }

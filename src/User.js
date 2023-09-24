@@ -14,8 +14,8 @@ import {getCountries} from './services/countries/getCountries';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 const User = () => {
-  const username = useSelector(state => state.user.name);
-  const userage = useSelector(state => state.user.age);
+  const userName = useSelector(state => state.user.name);
+  const userAge = useSelector(state => state.user.age);
   const userPhone = useSelector(state => state.user.phone);
   const dispatch = useDispatch();
 
@@ -106,8 +106,8 @@ const User = () => {
           <Text testID={'name'} style={styles.text}>
             Your name is{' '}
           </Text>
-          <Text testID={'age'} style={styles.text}>
-            {username}
+          <Text testID={'App.username.text'} style={styles.text}>
+            {userName}
           </Text>
           <TextInput
             style={styles.input}
@@ -116,8 +116,12 @@ const User = () => {
             placeholder="Name"
             testID="App.username"
           />
-          <Text style={styles.text}>Your age is </Text>
-          <Text style={styles.text}>{userage}</Text>
+          <Text testID={'age'} style={styles.text}>
+            Your age is{' '}
+          </Text>
+          <Text testID={'App.userage.text'} style={styles.text}>
+            {userAge}
+          </Text>
           <TextInput
             style={styles.input}
             onChangeText={text => setAge(text)}
@@ -127,7 +131,9 @@ const User = () => {
           />
           <View>
             <Text style={styles.text}>Your phone is </Text>
-            <Text style={styles.text}>{userPhone}</Text>
+            <Text style={styles.text} testID="App.phone.text">
+              {userPhone}
+            </Text>
             <View style={styles.dropDownWrapper}>
               <DropDownPicker
                 open={openCountries}
@@ -154,7 +160,11 @@ const User = () => {
             </View>
           </View>
           <View>
-            <Button title="Submit" onPress={() => handleSubmit()} />
+            <Button
+              testID="App.submit"
+              title="Submit"
+              onPress={() => handleSubmit()}
+            />
           </View>
         </View>
       )}
